@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/styles.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Personaje</title>
+</head>
+<body>
+
+<h2>Editar Personaje</h2>
+
+<form th:action="@{/movies/editar}" th:object="${movie}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <label for="title">Titulo:</label>
+    <input type="text" id="title" th:field="*{title}" required>
+    <br>
+
+    <label for="releaseYear">Año de lanzamiento:</label>
+    <input type="number" id="releaseYear" th:field="*{releaseYear}" required>
+    <br>
+
+    <label for="description">Descripción:</label>
+    <textarea id="description" th:field="*{description}" required></textarea>
+    <br>
+
+    <button type="submit">Actualizar Pelicula</button>
+</form>
+
+<br>
+<a th:href="@{/movies/list}">Volver al listado</a>
+
+</body>
+</html>

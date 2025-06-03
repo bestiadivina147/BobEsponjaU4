@@ -26,8 +26,24 @@
         <td>
             <span th:each="personaje : ${movie.personajes}" th:text="${personaje.name} + ' '"></span>
         </td>
+        <td>
+            <a th:href="@{/movies/eliminar/{id}(id=${movie.id})}">
+                <button type="button">Eliminar</button>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
+
+<h2>Buscar un pelicula</h2>
+<form th:action="@{/movies/}" method="get">
+    <label for="movieId">ID dela pelicula:</label>
+    <input type="number" id="movieId" name="id" min="1" required>
+    <button type="submit">Actualizar Pelicula</button>
+</form>
+
+<a th:href="@{/movies/peliculaform}">
+    <button>Añadir Pelicula</button>
+</a>
 </body>
 </html>

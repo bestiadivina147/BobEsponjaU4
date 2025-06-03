@@ -27,7 +27,7 @@ public class Movie {
     private String description;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER)
     private Set<Personaje> personajes = new HashSet<>();
 
 
