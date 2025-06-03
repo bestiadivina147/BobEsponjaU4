@@ -4,23 +4,23 @@
 <h2>Añadir Nuevo Personaje</h2>
 <form th:action="@{/personajes/guardar}" th:object="${personaje}" method="post">
   <label for="name">Nombre:</label>
-  <input type="text" id="name" th:field="*{personaje.name}" required>
+  <input type="text" id="name" th:field="*{name}" required>
   <br>
 
   <label for="species">Especie:</label>
-  <input type="text" id="species" th:field="*{personaje.species}" required>
+  <input type="text" id="species" th:field="*{species}" required>
   <br>
 
   <label for="age">Edad:</label>
-  <input type="number" id="age" th:field="*{personaje.age}" required>
+  <input type="number" id="age" th:field="*{age}" required>
   <br>
 
   <label for="description">Descripción:</label>
-  <textarea id="description" th:field="*{personaje.description}" required></textarea>
+  <textarea id="description" th:field="*{description}" required></textarea>
   <br>
 
   <label for="workplace">Lugar de Trabajo:</label>
-  <select id="workplace" th:field="*{personaje.workplace}">
+  <select id="workplace" th:field="*{workplace}">
     <option value="">Seleccionar...</option>
     <option th:each="work : ${workplaces}" th:value="${work.id}" th:text="${work.name}"></option>
   </select>

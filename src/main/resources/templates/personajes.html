@@ -16,6 +16,7 @@
         <th>Edad</th>
         <th>Descripción</th>
         <th>Trabajo</th>
+        <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -26,14 +27,28 @@
         <td th:text="${personaje.age}"></td>
         <td th:text="${personaje.description}"></td>
         <td th:text="${personaje.workplace != null ? personaje.workplace.name : 'Sin trabajo'}"></td>
+        <td>
+            <a th:href="@{/personajes/eliminar/{id}(id=${personaje.id})}">
+                <button type="button">Eliminar</button>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
 
 <hr>
-<!-- Botón para redirigir al formulario completo -->
-<a th:href="@{/personajeform}">
-    <button>Ir al formulario completo</button>
+
+<h2>Buscar un personaje</h2>
+<form th:action="@{/personajes/}" method="get">
+    <label for="personajeId">ID del personaje:</label>
+    <input type="number" id="personajeId" name="id" min="1" required>
+    <button type="submit">Actualizar Personaje</button>
+</form>
+
+<hr>
+
+<a th:href="@{/personajes/personajeform}">
+    <button>Añadir Personaje</button>
 </a>
 
 </body>
