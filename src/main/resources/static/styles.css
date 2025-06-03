@@ -1,0 +1,88 @@
+/* 🌊 Fondo con degradado dinámico */
+body {
+    font-family: 'Comic Sans MS', sans-serif; /* Tipografía divertida */
+    background: linear-gradient(180deg, #00BFFF, #FFD700); /* Azul océano → Amarillo Bob Esponja */
+    color: #333;
+    text-align: center;
+    animation: cambiarColor 10s infinite alternate; /* Animación de fondo */
+}
+
+/* 🏝️ Encabezado */
+h1, h2 {
+    color: #0084C8; /* Azul océano */
+    text-shadow: 2px 2px #FFD700; /* Sombras doradas */
+}
+
+/* 📜 Tabla de personajes */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #FFFFFF; /* Fondo blanco para contraste */
+    border: 5px solid #0084C8; /* Azul océano */
+    box-shadow: 0 0 10px rgba(0, 132, 200, 0.6);
+}
+
+/* 🌊 Botones */
+button {
+    background-color: #FFD700; /* Dorado vibrante */
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 3px 3px 0px #0084C8; /* Sombra azul océano */
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #F4A460; /* Arena */
+    color: white;
+    transform: scale(1.1);
+}
+
+/* 🎉 Movimiento de las olas */
+@keyframes olas {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.wave-effect {
+    display: inline-block;
+    animation: olas 3s infinite ease-in-out;
+}
+
+/* 🌊 Estilos del formulario centrado */
+form {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border: 3px solid #0084C8;
+    width: 50%; /* Reduce el ancho */
+    max-width: 500px; /* Límite máximo para evitar que se expanda */
+    margin: 20px auto; /* Lo centra en la página */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 132, 200, 0.6);
+    text-align: center; /* Centra los elementos */
+}
+
+/* 📜 Ajuste de los elementos dentro del formulario */
+input, select, textarea {
+    width: 90%; /* Evita que los inputs se salgan del formulario */
+    padding: 8px;
+    margin: 10px 0;
+    border: 2px solid #FFD700; /* Dorado */
+    border-radius: 5px;
+    display: block; /* Asegura que los inputs estén en línea */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 🌊 Centra los botones */
+button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+}

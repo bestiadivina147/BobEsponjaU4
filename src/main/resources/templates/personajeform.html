@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/styles.css}">
 <hr>
 <h2>Añadir Nuevo Personaje</h2>
 <form th:action="@{/personajes/guardar}" th:object="${personaje}" method="post">
