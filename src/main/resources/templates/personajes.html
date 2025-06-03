@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Personajes</title>
+</head>
+<body>
+<h1>Lista de Personajes</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Especie</th>
+        <th>Edad</th>
+        <th>Descripción</th>
+        <th>Trabajo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="personaje : ${personajes}">
+        <td th:text="${personaje.id}"></td>
+        <td th:text="${personaje.name}"></td>
+        <td th:text="${personaje.species}"></td>
+        <td th:text="${personaje.age}"></td>
+        <td th:text="${personaje.description}"></td>
+        <td th:text="${personaje.workplace != null ? personaje.workplace.name : 'Sin trabajo'}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<hr>
+<!-- Botón para redirigir al formulario completo -->
+<a th:href="@{/personajeform}">
+    <button>Ir al formulario completo</button>
+</a>
+
+</body>
+</html>
