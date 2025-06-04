@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,6 +84,45 @@ public class MovieController {
     public String deleteMovie(@PathVariable Integer id) {
         movieService.deleteMovie(id);
         return "redirect:/movies/list";
+    }
+
+    @GetMapping("/gestionar")
+    public String gestionarRelacion(Model model) {
+        model.addAttribute("movies", movieService.getAllMovies());
+        model.addAttribute("personajes", personajeService.getAllPersonajes());
+        return "gestionarRelacion"; // Nombre del HTML
+    }
+
+
+    @PostMapping("/asignar")
+    public String asignarPersonaje(@RequestParam Integer movieId, @RequestParam Integer personajeId) {
+        Optional<Movie> movieOpt = movieService.getMovieById(movieId);
+        Optional<Personaje> personajeOpt = personajeService.getPersonajeById(personajeId);
+
+        if (movieOpt.isPresent() && personajeOpt.isPresent()) {
+            Movie movie = movieOpt.get();
+            Personaje personaje = personajeOpt.get();
+
+            // 🔹 Agregamos el personaje sin sobrescribir los existentes
+            movie.getPersonajes().add(personaje);
+            personaje.getMovies().add(movie);
+            personajeService.savePersonaje(personaje);
+            movieService.saveMovie(movie);
+        }
+        return "redirect:/movies/gestionar";
+    }
+
+    @PostMapping("/quitar")
+    public String quitarPersonaje(@RequestParam int movieId, @RequestParam int personajeId) {
+        Optional<Movie> movieOpt = movieService.getMovieById(movieId);
+        Optional<Personaje> personajeOpt = personajeService.getPersonajeById(personajeId);
+
+        if (movieOpt.isPresent() && personajeOpt.isPresent()) {
+            Movie movie = movieOpt.get();
+            movie.getPersonajes().remove(personajeOpt.get());
+            movieService.saveMovie(movie);
+        }
+        return "redirect:/movies/gestionar";
     }
 }
 

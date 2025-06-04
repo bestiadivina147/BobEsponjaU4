@@ -37,22 +37,22 @@ public class PersonajeController {
         return "personajeform"; // Devuelve la plantilla
     }
 
-@GetMapping("/")
-public String getPersonajeById(@RequestParam(name = "id", required = false) Integer id, Model model) {
-    if (id == null) {
-        return "redirect:/personajes/list"; // Si el ID no es válido, redirige al listado
-    }
+    @GetMapping("/")
+    public String getPersonajeById(@RequestParam(name = "id", required = false) Integer id, Model model) {
+        if (id == null) {
+            return "redirect:/personajes/list"; // Si el ID no es válido, redirige al listado
+        }
 
-    Optional<Personaje> personajeOpt = personajeService.getPersonajeById(id);
-    if (personajeOpt.isPresent()) {
-        model.addAttribute("personaje", personajeOpt.get());
-        List<Workplace> workplaces = workplaceService.getAllWorkplaces();
-        model.addAttribute("workplaces", workplaces);
-        return "editPersonaje"; // Carga la vista correcta
-    }
+        Optional<Personaje> personajeOpt = personajeService.getPersonajeById(id);
+        if (personajeOpt.isPresent()) {
+            model.addAttribute("personaje", personajeOpt.get());
+            List<Workplace> workplaces = workplaceService.getAllWorkplaces();
+            model.addAttribute("workplaces", workplaces);
+            return "editPersonaje"; // Carga la vista correcta
+        }
 
-    return "redirect:/personajes/list"; // Si el personaje no existe, vuelve al listado
-}
+        return "redirect:/personajes/list"; // Si el personaje no existe, vuelve al listado
+    }
 
 
     @PostMapping("/guardar")
@@ -82,7 +82,6 @@ public String getPersonajeById(@RequestParam(name = "id", required = false) Inte
 
         return "redirect:/personajes/list"; // Si el personaje no existe, vuelve al listado
     }
-
 
 
     @GetMapping("/eliminar/{id}")

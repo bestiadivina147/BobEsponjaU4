@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/styles.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Lugar De Trabajo</title>
+</head>
+<body>
+
+<h2>Editar Lugar De Trabajo</h2>
+
+<form th:action="@{/workplaces/editar}" th:object="${workplace}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" th:field="*{name}" required>
+    <br>
+
+    <label for="location">Localizacion:</label>
+    <input type="text" id="location" th:field="*{location}" required>
+    <br>
+
+    <label for="description">Descripción:</label>
+    <textarea id="description" th:field="*{description}" required></textarea>
+    <br>
+
+    <button type="submit">Actualizar Lugar de Trabajo</button>
+</form>
+
+<br>
+<a th:href="@{/workplaces/list}">Volver al listado</a>
+
+</body>
+</html>

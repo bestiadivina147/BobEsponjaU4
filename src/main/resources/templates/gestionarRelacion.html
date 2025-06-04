@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionar Relación Películas - Personajes</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h1>Gestionar Relación Películas - Personajes</h1>
+
+<form th:action="@{/movies/asignar}" method="post">
+    <label for="movie">Seleccionar Película:</label>
+    <select id="movie" name="movieId">
+        <option th:each="movie : ${movies}" th:value="${movie.id}" th:text="${movie.title}"></option>
+    </select>
+
+    <label for="personaje">Seleccionar Personaje:</label>
+    <select id="personaje" name="personajeId"> <!-- 🔹 Cambié el nombre para que coincida con el controlador -->
+        <option th:each="personaje : ${personajes}" th:value="${personaje.id}" th:text="${personaje.name}"></option>
+    </select>
+
+    <button type="submit">Asignar Personaje</button>
+</form>
+
+<hr>
+
+<h2>Películas con Personajes Asignados</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Película</th>
+        <th>Personajes</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie : ${movies}">
+        <td th:text="${movie.title}"></td>
+        <td>
+            <span th:each="personaje : ${movie.personajes}" th:text="${personaje.name} + ' '"></span>
+        </td>
+        <td>
+            <form th:action="@{/movies/quitar}" method="post">
+                <input type="hidden" name="movieId" th:value="${movie.id}">
+                <label for="personaje">Quitar Personaje:</label>
+                <select id="personaje" name="personajeId">
+                    <option th:each="personaje : ${movie.personajes}" th:value="${personaje.id}" th:text="${personaje.name}"></option>
+                </select>
+                <button type="submit">Quitar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
