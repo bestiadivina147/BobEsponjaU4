@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h1>Menú Principal</h1>
+
+<nav>
+    <a th:href="@{/movies/list}">
+        <button>Películas 🎬</button>
+    </a>
+    <a th:href="@{/personajes/list}">
+        <button>Personajes 🎭</button>
+    </a>
+    <a th:href="@{/workplaces/list}">
+        <button>Workplaces 🏢</button>
+    </a>
+</nav>
+</body>
+</html>

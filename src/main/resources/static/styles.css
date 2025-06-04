@@ -2,10 +2,14 @@
 body {
     font-family: 'Comic Sans MS', sans-serif; /* Tipografía divertida */
     background: linear-gradient(180deg, #00BFFF, #FFD700); /* Azul océano → Amarillo Bob Esponja */
+    background-repeat: no-repeat; /* 🔹 Evita la repetición del gradiente */
+    background-attachment: fixed; /* 🔹 Mantiene el fondo fijo */
+    background-size: cover; /* 🔹 Hace que el gradiente ocupe toda la pantalla */
     color: #333;
     text-align: center;
     animation: cambiarColor 10s infinite alternate; /* Animación de fondo */
 }
+
 
 /* 🏝️ Encabezado */
 h1, h2 {

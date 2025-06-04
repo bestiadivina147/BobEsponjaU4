@@ -3,16 +3,14 @@ package edu.badpals.bobesponjau4.service;
 import edu.badpals.bobesponjau4.model.*;
 import edu.badpals.bobesponjau4.repository.PersonajeRepository;
 import edu.badpals.bobesponjau4.repository.MovieRepository;
+import edu.badpals.bobesponjau4.repository.UsuarioRepository;
 import edu.badpals.bobesponjau4.repository.WorkplaceRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @Profile("dev") // Solo se ejecutará en el perfil de desarrollo
@@ -27,6 +25,8 @@ public class DbH2Init {
     @Autowired
     private WorkplaceRepository workplaceRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
 
 
@@ -37,6 +37,7 @@ public class DbH2Init {
         initPersonajes();
         initMovies();
         assignMoviesToCharacters();
+        initUsuarios();
     }
 
     private void initWorkplaces() {
@@ -137,5 +138,19 @@ public class DbH2Init {
             }
         }
     }
+
+    private void initUsuarios() {
+        List<Usuario> usuarios = List.of(
+                new Usuario(null,"a@a.com", "a", "a", new Date(1999, 1, 1)),
+                new Usuario(null,"bob@example.com", "Bob Esponja", "bob123", new Date(1999, 1, 1)),
+                new Usuario(null,"patricio@example.com", "Patricio Estrella", "estrella456", new Date(1998, 5, 21)),
+                new Usuario(null,"calamardo@example.com", "Calamardo Tentáculos", "tentaculos789", new Date(1992, 8, 15)),
+                new Usuario(null,"arenita@example.com", "Arenita Mejillas", "ardilla321", new Date(1995, 3, 10)),
+                new Usuario(null,"don_cangrejo@example.com", "Don Cangrejo", "dinero999", new Date(1980, 11, 25))
+        );
+
+        usuarioRepository.saveAll(usuarios);
+    }
+
 
 }
