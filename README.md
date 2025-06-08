@@ -26,7 +26,7 @@ Este proyecto gestiona una base de datos inspirada en el universo de **Bob Espon
 
 ## Diagrama Entidad-Relación
 
-![Diagrama ER](src/main/resources/static/Diagrama.png)
+![Diagrama ER](src/main/resources/static/Diagrama.PNG)
 
 ---
 
