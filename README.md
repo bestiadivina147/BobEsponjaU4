@@ -7,6 +7,7 @@
 - [Tecnologías](#tecnologías)
 - [Estructura de Paquetes](#estructura-de-paquetes)
 - [Configuración](#configuración)
+- [Video](#video-tutorial)
 - [Uso](#uso)
 - [Rutas Principales](#rutas-principales)
 - [Pruebas](#pruebas)
@@ -74,6 +75,16 @@ spring:
 ```
 
 ---
+
+
+## Video Tutorial
+
+Puedes ver un recorrido por la aplicación en este video:
+
+[![Video Tutorial](https://img.youtube.com/vi/ZN1J4LJnlZU/0.jpg)](https://youtu.be/ZN1J4LJnlZU)
+
+O directamente en YouTube:  
+https://youtu.be/ZN1J4LJnlZU
 
 ## Uso
 
